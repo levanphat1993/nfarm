@@ -1,0 +1,14 @@
+{
+    "name": "phatle",
+    "description": "composer",
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+          "src\\": "src/",
+          "src\\entities\\": "src/entities",
+          "src\\views\\": "src/views"
+        }
+      }
+}
