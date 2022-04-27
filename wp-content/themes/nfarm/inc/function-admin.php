@@ -119,17 +119,29 @@ function nfarm_custom_settings()
      * 
      * add_settings_field($id, $title, $callback, $page, $section, $args)
      */
+
+    register_setting('nfarm-settings-group', 'profile_picture');
     register_setting('nfarm-settings-group', 'first_name');
     register_setting('nfarm-settings-group', 'last_name');
+    register_setting('nfarm-settings-group', 'user_desperation');
     register_setting('nfarm-settings-group', 'twitter_handler', 'nfarm_sanitize_twitter_handler');
     register_setting('nfarm-settings-group', 'facebook_handler', 'nfarm_sanitize_facebook_handler');
     register_setting('nfarm-settings-group', 'gplus_handler', 'nfarm_sanitize_gplus_handler');
 
     add_settings_section('nfarm-sidebar-options', 'Sidebar Options', 'nfarm_sidebar_options', 'alecaddd_nfarm');
+    add_settings_field('sidebar-profile-picture', 'Profile Picture', 'nfarm_profile_picture', 'alecaddd_nfarm', 'nfarm-sidebar-options');
     add_settings_field('sidebar-name', 'First Name', 'nfarm_sidebar_name', 'alecaddd_nfarm', 'nfarm-sidebar-options');
+    add_settings_field('sidebar-desperation', 'Desperation', 'nfarm_sidebar_desperation', 'alecaddd_nfarm', 'nfarm-sidebar-options');
     add_settings_field('sidebar-twitter', 'Twitter handler', 'nfarm_sidebar_twitter', 'alecaddd_nfarm', 'nfarm-sidebar-options');
     add_settings_field('sidebar-facebook', 'Facebook handler', 'nfarm_sidebar_facebook', 'alecaddd_nfarm', 'nfarm-sidebar-options');
     add_settings_field('sidebar-gplus', 'Google+ handler', 'nfarm_sidebar_gplus', 'alecaddd_nfarm', 'nfarm-sidebar-options');
+}
+
+function nfarm_profile_picture()
+{
+    $picture = esc_attr(get_option('profile_picture'));
+    echo '<input type="button" class="button button-secondary" value="Upload Profile Picture" id="upload-button" />'
+        .'<input type="hidden" name="profile_picture" id="profile-picture" value="'.$picture.'" />';
 }
 
 function nfarm_sidebar_twitter()
@@ -150,6 +162,14 @@ function nfarm_sidebar_gplus()
     $gplusHandler = esc_attr(get_option('gplus_handler'));
     echo '<input type="text" name="gplus_handler" value="'.$gplusHandler.'" placeholder="Google+ Handler"  />';
 }
+
+function nfarm_sidebar_desperation()
+{
+    $desperation = esc_attr(get_option('user_desperation'));
+    echo '<input type="text" name="user_desperation" value="'.$desperation.'" placeholder="Desperation"  />' 
+        .'<p class="description">Write something smart.</p>';
+}
+
 
 function nfarm_sidebar_options()
 {
