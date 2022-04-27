@@ -1,4 +1,4 @@
-<h1>Nfarm Theme Options</h1>
+<h1>Nfarm Sidebar Options</h1>
 <?php settings_errors(); ?>
 <?php 
 
@@ -28,5 +28,5 @@
 <form method="post" action="options.php" class="nfarm-general-form">
     <?php settings_fields('nfarm-settings-group'); ?>
     <?php do_settings_sections('alecaddd_nfarm'); ?>
-    <?php submit_button(); ?>
+    <?php submit_button( 'Save Changes', 'primary', 'btnSubmit' ); ?>
 </form>

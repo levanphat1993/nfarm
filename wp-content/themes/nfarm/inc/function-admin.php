@@ -49,7 +49,8 @@ function nfarm_add_admin_page()
     // add_menu_page('Nfarm Theme Options', 'nfarm', 'manage_options', 'alecaddd-nfarm', 'nfarm_theme_create_page', 'dashicons-admin-customizer', 110);
 
     // Generate Nfarm Admin Sub Page
-    add_submenu_page('alecaddd_nfarm', 'Nfram Theme Options', 'General', 'manage_options', 'alecaddd_nfarm', 'nfarm_theme_create_page');
+    add_submenu_page('alecaddd_nfarm', 'Nfram Sidebar Options', 'Sidebar', 'manage_options', 'alecaddd_nfarm', 'nfarm_theme_create_page');
+    add_submenu_page('alecaddd_nfarm', 'Nfram Theme Options', 'Theme Options', 'manage_options', 'alecaddd_nfarm_theme', 'nfarm_theme_support_page' );
     add_submenu_page('alecaddd_nfarm', 'Nfram Css Options', 'Custom CSS', 'manage_options', 'alecaddd_nfarm_css', 'nfarm_theme_settings_page');
 
     // Activate Custom Settings
@@ -120,6 +121,7 @@ function nfarm_custom_settings()
      * add_settings_field($id, $title, $callback, $page, $section, $args)
      */
 
+    // Sidebar Options
     register_setting('nfarm-settings-group', 'profile_picture');
     register_setting('nfarm-settings-group', 'first_name');
     register_setting('nfarm-settings-group', 'last_name');
@@ -129,19 +131,72 @@ function nfarm_custom_settings()
     register_setting('nfarm-settings-group', 'gplus_handler', 'nfarm_sanitize_gplus_handler');
 
     add_settings_section('nfarm-sidebar-options', 'Sidebar Options', 'nfarm_sidebar_options', 'alecaddd_nfarm');
-    add_settings_field('sidebar-profile-picture', 'Profile Picture', 'nfarm_profile_picture', 'alecaddd_nfarm', 'nfarm-sidebar-options');
+    add_settings_field('sidebar-profile-picture', 'Profile Picture', 'nfarm_sidebar_profile', 'alecaddd_nfarm', 'nfarm-sidebar-options');
     add_settings_field('sidebar-name', 'First Name', 'nfarm_sidebar_name', 'alecaddd_nfarm', 'nfarm-sidebar-options');
     add_settings_field('sidebar-desperation', 'Desperation', 'nfarm_sidebar_desperation', 'alecaddd_nfarm', 'nfarm-sidebar-options');
     add_settings_field('sidebar-twitter', 'Twitter handler', 'nfarm_sidebar_twitter', 'alecaddd_nfarm', 'nfarm-sidebar-options');
     add_settings_field('sidebar-facebook', 'Facebook handler', 'nfarm_sidebar_facebook', 'alecaddd_nfarm', 'nfarm-sidebar-options');
     add_settings_field('sidebar-gplus', 'Google+ handler', 'nfarm_sidebar_gplus', 'alecaddd_nfarm', 'nfarm-sidebar-options');
+
+    // Theme Support Options
+    register_setting( 'nfarm-theme-support', 'post_formats', '');
+    
+    register_setting( 'nfarm-theme-support', 'custom_header' );
+	register_setting( 'nfarm-theme-support', 'custom_background' );
+    
+    add_settings_section('nfram-theme-options', 'Theme Options', 'nfarm_theme_opntions', 'alecaddd_nfarm_theme');
+
+    add_settings_field('post_formats', 'Post Formats', 'nfarm_post_formats', 'alecaddd_nfarm_theme', 'nfram-theme-options');
+    add_settings_field( 'custom-header', 'Custom Header', 'nfarm_custom_header', 'alecaddd_nfarm_theme', 'nfram-theme-options' );
+	add_settings_field( 'custom-background', 'Custom Background', 'nfarm_custom_background', 'alecaddd_nfarm_theme', 'nfram-theme-options' );
 }
 
-function nfarm_profile_picture()
+// Post Formats Callback Function
+
+function nfarm_theme_opntions()
 {
-    $picture = esc_attr(get_option('profile_picture'));
-    echo '<input type="button" class="button button-secondary" value="Upload Profile Picture" id="upload-button" />'
-        .'<input type="hidden" name="profile_picture" id="profile-picture" value="'.$picture.'" />';
+    echo 'Activate and Deactivate specific Theme Support Options';
+}
+
+// Theme Support Options
+function nfarm_post_formats() {
+	$options = get_option( 'post_formats' );
+	$formats = array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' );
+	$output = '';
+	foreach ( $formats as $format ){
+		$checked = ( @$options[$format] == 1 ? 'checked' : '' );
+		$output .= '<label><input type="checkbox" id="'.$format.'" name="post_formats['.$format.']" value="1" '.$checked.' /> '.$format.'</label><br>';
+	}
+	echo $output;
+}
+
+function nfarm_custom_header() {
+	$options = get_option( 'custom_header' );
+	$checked = ( @$options == 1 ? 'checked' : '' );
+	echo '<label><input type="checkbox" id="custom_header" name="custom_header" value="1" '.$checked.' /> Activate the Custom Header</label>';
+}
+
+function nfarm_custom_background() {
+	$options = get_option( 'custom_background' );
+	$checked = ( @$options == 1 ? 'checked' : '' );
+	echo '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.' /> Activate the Custom Background</label>';
+}
+
+// Sidebar Options Function
+function nfarm_sidebar_options()
+{
+    echo 'Customize your Sidebar Information';
+}
+
+
+function nfarm_sidebar_profile()
+{
+    $picture = esc_attr( get_option( 'profile_picture' ) );
+	if( empty($picture) ){
+		echo '<input type="button" class="button button-secondary" value="Upload Profile Picture" id="upload-button"><input type="hidden" id="profile-picture" name="profile_picture" value="" />';
+	} else {
+		echo '<input type="button" class="button button-secondary" value="Replace Profile Picture" id="upload-button"><input type="hidden" id="profile-picture" name="profile_picture" value="'.$picture.'" /> <input type="button" class="button button-secondary" value="Remove" id="remove-picture">';
+	}
 }
 
 function nfarm_sidebar_twitter()
@@ -169,34 +224,6 @@ function nfarm_sidebar_desperation()
     echo '<input type="text" name="user_desperation" value="'.$desperation.'" placeholder="Desperation"  />' 
         .'<p class="description">Write something smart.</p>';
 }
-
-
-function nfarm_sidebar_options()
-{
-    echo 'Customize your Sidebar Information';
-}
-
-// Sanitization settings
-function nfarm_sanitize_twitter_handler($input)
-{
-    /**
-     * Description:
-     *      . Checks for invalid UTF-8,
-     *      . Converts single < characters to entities
-     *      . Strips all tags
-     *      . Removes line breaks, tabs, and extra whitespace
-     *      . Strips octets
-     * 
-     * Parameters:
-     *      $str: (string) (Required) String to sanitize.
-     *      
-     * sanitize_text_field($str)
-     */
-    $output = sanitize_text_field($input);
-    $output = str_replace('@', '', $output);
-    return $output;
-}
-
 
 function nfarm_sidebar_name()
 {
@@ -227,9 +254,39 @@ function nfarm_sidebar_name()
         .'<input type="text" name="last_name" value="'.$lastName.'" placeholder="Last Name" />';
 }
 
+
+// Sanitization settings
+function nfarm_sanitize_twitter_handler($input)
+{
+    /**
+     * Description:
+     *      . Checks for invalid UTF-8,
+     *      . Converts single < characters to entities
+     *      . Strips all tags
+     *      . Removes line breaks, tabs, and extra whitespace
+     *      . Strips octets
+     * 
+     * Parameters:
+     *      $str: (string) (Required) String to sanitize.
+     *      
+     * sanitize_text_field($str)
+     */
+    $output = sanitize_text_field($input);
+    $output = str_replace('@', '', $output);
+    return $output;
+}
+
+// Template submenu functions
+
 function nfarm_theme_create_page()
 {
     require_once( get_template_directory() . '/inc/templates/nfarm-admin.php' );
+}
+
+
+function nfarm_theme_support_page()
+{
+	require_once( get_template_directory() . '/inc/templates/nfarm-theme-support.php' );
 }
 
 function nfarm_theme_settings_page()
