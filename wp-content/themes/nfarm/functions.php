@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * (string) Path to current theme's template directory.
  * get_template_directory()
