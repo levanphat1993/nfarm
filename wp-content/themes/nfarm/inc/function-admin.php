@@ -120,14 +120,50 @@ function nfarm_custom_settings()
      * add_settings_field($id, $title, $callback, $page, $section, $args)
      */
     register_setting('nfarm-settings-group', 'first_name');
+    register_setting('nfarm-settings-group', 'last_name');
+    register_setting('nfarm-settings-group', 'twitter_handler', 'nfarm_sanitize_twitter_handler');
+    register_setting('nfarm-settings-group', 'facebook_handler', 'nfarm_sanitize_facebook_handler');
+    register_setting('nfarm-settings-group', 'gplus_handler', 'nfarm_sanitize_gplus_handler');
+
     add_settings_section('nfarm-sidebar-options', 'Sidebar Options', 'nfarm_sidebar_options', 'alecaddd_nfarm');
     add_settings_field('sidebar-name', 'First Name', 'nfarm_sidebar_name', 'alecaddd_nfarm', 'nfarm-sidebar-options');
+    add_settings_field('sidebar-twitter', 'Twitter handler', 'nfarm_sidebar_twitter', 'alecaddd_nfarm', 'nfarm-sidebar-options');
+    add_settings_field('sidebar-facebook', 'Facebook handler', 'nfarm_sidebar_facebook', 'alecaddd_nfarm', 'nfarm-sidebar-options');
+    add_settings_field('sidebar-gplus', 'Google+ handler', 'nfarm_sidebar_gplus', 'alecaddd_nfarm', 'nfarm-sidebar-options');
+}
+
+function nfarm_sidebar_twitter()
+{
+    $twitterHandler = esc_attr(get_option('twitter_handler'));
+    echo '<input type="text" name="twitter_handler" value="'.$twitterHandler.'" placeholder="Twitter Handler"  />'
+        .'<p class="description">Input your Twitter username without the @ character.</p>';
+}
+
+function nfarm_sidebar_facebook()
+{
+    $facebookHandler = esc_attr(get_option('facebook_handler'));
+    echo '<input type="text" name="facebook_handler" value="'.$facebookHandler.'" placeholder="Facebook Handler"  />';
+}
+
+function nfarm_sidebar_gplus()
+{
+    $gplusHandler = esc_attr(get_option('gplus_handler'));
+    echo '<input type="text" name="gplus_handler" value="'.$gplusHandler.'" placeholder="Google+ Handler"  />';
 }
 
 function nfarm_sidebar_options()
 {
     echo 'Customize your Sidebar Information';
 }
+
+// Sanitization settings
+function nfarm_sanitize_twitter_handler($input)
+{
+    $output = sanitize_text_field($input);
+    $output = str_replace('@', '', $output);
+    return $output;
+}
+
 
 function nfarm_sidebar_name()
 {
@@ -153,7 +189,9 @@ function nfarm_sidebar_name()
      */
 
     $firstName = esc_attr(get_option('first_name'));
-    echo '<input type="text" name="first_name" value="'.$firstName.'" placeholder="First Name" />';
+    $lastName = esc_attr(get_option('last_name'));
+    echo '<input type="text" name="first_name" value="'.$firstName.'" placeholder="First Name" />'
+        .'<input type="text" name="last_name" value="'.$lastName.'" placeholder="Last Name" />';
 }
 
 function nfarm_theme_create_page()
