@@ -159,6 +159,19 @@ function nfarm_sidebar_options()
 // Sanitization settings
 function nfarm_sanitize_twitter_handler($input)
 {
+    /**
+     * Description:
+     *      . Checks for invalid UTF-8,
+     *      . Converts single < characters to entities
+     *      . Strips all tags
+     *      . Removes line breaks, tabs, and extra whitespace
+     *      . Strips octets
+     * 
+     * Parameters:
+     *      $str: (string) (Required) String to sanitize.
+     *      
+     * sanitize_text_field($str)
+     */
     $output = sanitize_text_field($input);
     $output = str_replace('@', '', $output);
     return $output;
