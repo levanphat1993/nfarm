@@ -156,7 +156,32 @@ function nfarm_custom_settings()
     add_settings_section('nfarm-contact-secition', 'Contact Form', 'nfarm_contact_section', 'alecaddd_nfarm_theme_contact');
 
     add_settings_field('activate-form', 'Activate Contact Form', 'nfarm_activate_contact', 'alecaddd_nfarm_theme_contact', 'nfarm-contact-secition');
+
+    //Custom CSS Options
+	register_setting( 'nfarm-custom-css-options', 'nfarm_css', 'nfarm_sanitize_custom_css' );
+	
+	add_settings_section( 'nfarm-custom-css-section', 'Custom CSS', 'nfarm_custom_css_section_callback', 'alecaddd_nfarm_css' );
+	
+	add_settings_field( 'custom-css', 'Insert your Custom CSS', 'nfarm_custom_css_callback', 'alecaddd_nfarm_css', 'nfarm-custom-css-section' );
 }
+
+function nfarm_custom_css_section_callback()
+{
+	echo 'Customize Sunset Theme with your own CSS';
+}
+
+function nfarm_custom_css_callback() 
+{
+	$css = get_option('nfarm_css');
+
+	$css = ( empty($css) ? '/* Nfarm Theme Custom CSS */' : $css );
+	echo '<div id="customCss">'.$css.'</div>'
+        .'<textarea id="nfarm_css" name="nfarm_css" style="display:none;visibility:hidden;">'.$css.'</textarea>';
+
+   
+
+}
+
 
 // Post Formats Callback Function
 
@@ -296,6 +321,13 @@ function nfarm_sanitize_twitter_handler($input)
     return $output;
 }
 
+
+function nfarm_sanitize_custom_css($input)
+{
+	$output = esc_textarea($input);
+	return $output;
+}
+
 // Template submenu functions
 
 function nfarm_theme_create_page()
@@ -316,5 +348,5 @@ function nfarm_theme_contact_form_page()
 
 function nfarm_theme_settings_page()
 {
-    echo '<h1>Nfarm Custom Css</h1>';
+    require_once( get_template_directory() . '/inc/templates/nfarm-custom-css.php' );
 }

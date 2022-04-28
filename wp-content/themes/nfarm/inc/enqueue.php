@@ -9,9 +9,7 @@
 
 function nfarm_load_admin_scripts($hook)
 {
-    if ('toplevel_page_alecaddd_nfarm' != $hook) {
-        return;
-    }
+
     /**
      * Description: 
      * 
@@ -33,13 +31,26 @@ function nfarm_load_admin_scripts($hook)
      *      $media: (string) (Optional) The media for which this stylesheet has been defined. Accepts media types like 'all', 'print' and 'screen', or media queries like '(orientation: portrait)' and '(max-width: 640px)'. Default value: 'all'
      * wp_enqueue_style($handle, $src, $deps, $ver, $media)
      */ 
-    wp_register_style('nfarm_admin', get_template_directory_uri() . '/css/nfarm_admin.css', array(), '1.0.0', 'all');
-    wp_enqueue_style('nfarm_admin');
 
-    wp_enqueue_media();
+
+    if ('toplevel_page_alecaddd_nfarm' == $hook) {
+       
+        wp_register_style('nfarm_admin', get_template_directory_uri() . '/css/nfarm_admin.css', array(), '1.0.0', 'all');
+        wp_enqueue_style('nfarm_admin');
+        wp_enqueue_media();
+        wp_register_script( 'sunset-admin-script', get_template_directory_uri() . '/js/nfarm_admin.js', array('jquery'), '1.0.0', true );
+        wp_enqueue_script( 'sunset-admin-script' );
+
+    }else if ( 'nfarm_page_alecaddd_nfarm_css' == $hook ){
+		
+		wp_enqueue_style( 'ace', get_template_directory_uri() . '/css/nfarm.ace.css', array(), '1.0.0', 'all' );
+		wp_enqueue_script( 'ace', get_template_directory_uri() . '/js/ace/ace.js', array('jquery'), '1.2.1', true );
+		wp_enqueue_script( 'nfarm-custom-css-script', get_template_directory_uri() . '/js/nfarm.custom_css.js', array('jquery'), '1.0.0', true );
 	
-	wp_register_script( 'sunset-admin-script', get_template_directory_uri() . '/js/nfarm_admin.js', array('jquery'), '1.0.0', true );
-	wp_enqueue_script( 'sunset-admin-script' );
+	} else { 
+        return; 
+    }
+    
 
 }
 
