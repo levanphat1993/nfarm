@@ -217,6 +217,7 @@ function nfarm_post_formats() {
 
 function nfarm_custom_header() {
 	$options = get_option( 'custom_header' );
+    var_dump($options);
 	$checked = ( @$options == 1 ? 'checked' : '' );
 	echo '<label><input type="checkbox" id="custom_header" name="custom_header" value="1" '.$checked.' /> Activate the Custom Header</label>';
 }
