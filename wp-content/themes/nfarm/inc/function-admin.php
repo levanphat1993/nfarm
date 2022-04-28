@@ -51,6 +51,7 @@ function nfarm_add_admin_page()
     // Generate Nfarm Admin Sub Page
     add_submenu_page('alecaddd_nfarm', 'Nfram Sidebar Options', 'Sidebar', 'manage_options', 'alecaddd_nfarm', 'nfarm_theme_create_page');
     add_submenu_page('alecaddd_nfarm', 'Nfram Theme Options', 'Theme Options', 'manage_options', 'alecaddd_nfarm_theme', 'nfarm_theme_support_page' );
+    add_submenu_page('alecaddd_nfarm', 'Nfram Contact Form', 'Custom Form', 'manage_options', 'alecaddd_nfarm_theme_contact', 'nfarm_theme_contact_form_page');
     add_submenu_page('alecaddd_nfarm', 'Nfram Css Options', 'Custom CSS', 'manage_options', 'alecaddd_nfarm_css', 'nfarm_theme_settings_page');
 
     // Activate Custom Settings
@@ -139,16 +140,22 @@ function nfarm_custom_settings()
     add_settings_field('sidebar-gplus', 'Google+ handler', 'nfarm_sidebar_gplus', 'alecaddd_nfarm', 'nfarm-sidebar-options');
 
     // Theme Support Options
-    register_setting( 'nfarm-theme-support', 'post_formats', '');
-    
-    register_setting( 'nfarm-theme-support', 'custom_header' );
-	register_setting( 'nfarm-theme-support', 'custom_background' );
+    register_setting('nfarm-theme-support', 'post_formats', '');
+    register_setting('nfarm-theme-support', 'custom_header' );
+	register_setting('nfarm-theme-support', 'custom_background' );
     
     add_settings_section('nfram-theme-options', 'Theme Options', 'nfarm_theme_opntions', 'alecaddd_nfarm_theme');
 
     add_settings_field('post_formats', 'Post Formats', 'nfarm_post_formats', 'alecaddd_nfarm_theme', 'nfram-theme-options');
-    add_settings_field( 'custom-header', 'Custom Header', 'nfarm_custom_header', 'alecaddd_nfarm_theme', 'nfram-theme-options' );
-	add_settings_field( 'custom-background', 'Custom Background', 'nfarm_custom_background', 'alecaddd_nfarm_theme', 'nfram-theme-options' );
+    add_settings_field('custom-header', 'Custom Header', 'nfarm_custom_header', 'alecaddd_nfarm_theme', 'nfram-theme-options' );
+	add_settings_field('custom-background', 'Custom Background', 'nfarm_custom_background', 'alecaddd_nfarm_theme', 'nfram-theme-options' );
+
+    // Contact Form Options
+    register_setting('nfarm-contact-options', 'activate_contact');
+
+    add_settings_section('nfarm-contact-secition', 'Contact Form', 'nfarm_contact_section', 'alecaddd_nfarm_theme_contact');
+
+    add_settings_field('activate-form', 'Activate Contact Form', 'nfarm_activate_contact', 'alecaddd_nfarm_theme_contact', 'nfarm-contact-secition');
 }
 
 // Post Formats Callback Function
@@ -156,6 +163,19 @@ function nfarm_custom_settings()
 function nfarm_theme_opntions()
 {
     echo 'Activate and Deactivate specific Theme Support Options';
+}
+
+function nfarm_contact_section()
+{
+    echo 'Activate and Deactivate the Build-in Contact Form';
+}
+
+function nfarm_activate_contact()
+{
+
+    $options = get_option( 'activate_contact' );
+	$checked = ( @$options == 1 ? 'checked' : '' );
+	echo '<label><input type="checkbox" id="custom_header" name="activate_contact" value="1" '.$checked.' /></label>';
 }
 
 // Theme Support Options
@@ -287,6 +307,11 @@ function nfarm_theme_create_page()
 function nfarm_theme_support_page()
 {
 	require_once( get_template_directory() . '/inc/templates/nfarm-theme-support.php' );
+}
+
+function nfarm_theme_contact_form_page()
+{
+    require(get_template_directory() . '/inc/templates/nfarm-contact-form.php');
 }
 
 function nfarm_theme_settings_page()
