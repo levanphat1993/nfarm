@@ -543,7 +543,7 @@ final class WP_Customize_Nav_Menus {
 			),
 			'locationSlugMappedToName' => get_registered_nav_menus(),
 		);
-
+		
 		$data = sprintf( 'var _wpCustomizeNavMenusSettings = %s;', wp_json_encode( $settings ) );
 		wp_scripts()->add_data( 'customize-nav-menus', 'data', $data );
 
