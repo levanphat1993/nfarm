@@ -49,14 +49,8 @@
 
 					<div class="nav-container">
 						<div class="container">
-							<nav class="navbar navbar-deafult navbar-sunset">
-								<?php
-									wp_nav_menu( array(
-										'theme_location' => 'primary',
-										'container' => 'ul',
-										'menu_class' => 'nav navbar-nav'
-									) );	
-								?>
+							<nav class="navbar navbar-deafult navbar-nfarm">
+							
 							</nav>
 						</div>
 					</div><!-- .nav-container -->
@@ -65,5 +59,15 @@
 				</header><!-- .header-container -->
 			</div><!-- .col-xs-12 -->
 		</div><!-- .row -->
+
+
+		<?php
+									wp_nav_menu( array(
+										'theme_location' => 'primary',
+										'container' => false,
+										'menu_class' => 'nav navbar-nav',
+										'walker' => new Nfarm_Walker_Nav_Primary()
+									) );	
+								?>
 		
 	</div><!-- .container-fluid -->
