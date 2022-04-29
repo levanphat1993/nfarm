@@ -16,55 +16,23 @@ foreach ($formats as $format) {
 	$output[] = (@$options[$format] == 1 ? $format : '');
 }
 
-/**
- * Description: Must be called in the theme’s functions.php file to work. If attached to a hook, it must be ‘after_setup_theme’. The ‘init’ hook may be too late for some features.
- * Parameters:
- *      $feature: (string) (Required) The feature being added. Likely core values include:
- *          'admin-bar'
- *          'align-wide'
- *          'automatic-feed-links'
- *          'core-block-patterns'
- *          'custom-background'
- *          'custom-header'
- *          'custom-line-height'
- *          'custom-logo'
- *          'customize-selective-refresh-widgets'
- *          'custom-spacing'
- *          'custom-units'
- *          'dark-editor-style'
- *          'disable-custom-colors'
- *          'disable-custom-font-sizes'
- *          'editor-color-palette'
- *          'editor-gradient-presets'
- *          'editor-font-sizes'
- *          'editor-styles'
- *          'featured-content'
- *          'html5'
- *          'menus'
- *          'post-formats'
- *          'post-thumbnails'
- *          'responsive-embeds'
- *          'starter-content'
- *          'title-tag'
- *          'wp-block-styles'
- *          'widgets'
- *          'widgets-block-editor'
- *      $args: (mixed) (Optional) extra arguments to pass along with certain features.
- */
-
-if(!empty($options)) {
+if (!empty($options)) {
 	add_theme_support( 'post-formats', $output );
 }
 
 $header = get_option( 'custom_header' );
-if( @$header == 1 ){
+if (@$header == 1) {
 	add_theme_support( 'custom-header' );
 }
 
 $background = get_option( 'custom_background' );
-if( @$background == 1 ){
+if (@$background == 1) {
 	add_theme_support( 'custom-background' );
 }
+
+
+// Add Theme Support Post Thumbnails
+add_theme_support('post-thumbnails');
 
 /* Activate Nav Menu Option */
 function nfarm_register_nav_menu()
@@ -72,3 +40,39 @@ function nfarm_register_nav_menu()
 	register_nav_menu('primary', 'Header Navigation Menu');
 }
 add_action('after_setup_theme', 'nfarm_register_nav_menu');
+
+
+/*
+	========================
+		BLOG LOOP CUSTOM FUNCTIONS
+	========================
+*/
+
+function nfarm_posted_meta()
+{
+	$posted_on = human_time_diff( get_the_time('U') , current_time('timestamp') );
+	
+	$categories = get_the_category();
+	$separator = ', ';
+	$output = '';
+	$i = 1;
+
+	if (!empty($categories)) {
+		foreach ($categories as $category) {
+			
+			if ($i > 1) {
+				$output .= $separator;
+			}
+
+			$output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( 'View all posts in%s', $category->name ) .'">' . esc_html( $category->name ) .'</a>';
+			$i++; 
+		}
+	}
+	
+	return '<span class="posted-on">Posted <a href="'. esc_url( get_permalink() ) .'">' . $posted_on . '</a> ago</span> / <span class="posted-in">' . $output . '</span>';
+}
+
+function nfarm_posted_footer()
+{
+	return 'tags list and comment link';
+}

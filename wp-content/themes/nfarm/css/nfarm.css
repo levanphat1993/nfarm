@@ -1,6 +1,14 @@
 /*
 	@package sunsettheme
 */
+/*
+	Variables
+	------------------------------------------------
+*/
+/*
+	Mixins
+	------------------------------------------------
+*/
 /* 
 	Font Icon 
 	------------------------------------------------
@@ -12,7 +20,7 @@
   font-weight: normal;
   font-style: normal; }
 .sunset-icon {
-  font-family: 'sunset-icon' !important;
+  font-family: "sunset-icon" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -72,7 +80,7 @@
 	------------------------------------------------
 */
 body {
-  font-family: 'Raleway', 'Helvetica Neue', 'Helvetica', Arial, Verdana, sans-serif; }
+  font-family: "Raleway", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif; }
 
 .background-image {
   background-position: center center;
@@ -114,5 +122,102 @@ body {
   bottom: 0;
   left: 0;
   right: 0; }
+
+/* 
+	Nav Bar 
+	------------------------------------------------
+*/
+.navbar-nfarm {
+  text-align: center;
+  border: none;
+  border-radius: 0;
+  min-height: auto;
+  margin-bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); }
+  .navbar-nfarm ul {
+    float: none; }
+  .navbar-nfarm li {
+    float: none;
+    display: inline-block; }
+    .navbar-nfarm li.active a {
+      opacity: 1; }
+      .navbar-nfarm li.active a:after {
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1; }
+    .navbar-nfarm li.open a {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.1) !important; }
+      .navbar-nfarm li.open a:after {
+        -webkit-transform: translateY(10px);
+        -moz-transform: translateY(10px);
+        -ms-transform: translateY(10px);
+        -o-transform: translateY(10px);
+        transform: translateY(10px);
+        opacity: 0 !important; }
+      .navbar-nfarm li.open a:hover, .navbar-nfarm li.open a:focus, .navbar-nfarm li.open a:visited {
+        background-color: rgba(0, 0, 0, 0.1) !important; }
+        .navbar-nfarm li.open a:hover:after, .navbar-nfarm li.open a:focus:after, .navbar-nfarm li.open a:visited:after {
+          -webkit-transform: translateY(10px);
+          -moz-transform: translateY(10px);
+          -ms-transform: translateY(10px);
+          -o-transform: translateY(10px);
+          transform: translateY(10px);
+          opacity: 0 !important; }
+    .navbar-nfarm li a {
+      text-transform: uppercase;
+      color: #fff;
+      font-size: 12px;
+      opacity: 0.7;
+      letter-spacing: 0.05em;
+      background: none;
+      -webkit-transition: opacity 320ms ease;
+      -moz-transition: opacity 320ms ease;
+      -ms-transition: opacity 320ms ease;
+      -o-transition: opacity 320ms ease;
+      transition: opacity 320ms ease; }
+      .navbar-nfarm li a:hover, .navbar-nfarm li a:focus, .navbar-nfarm li a:visited {
+        background: none;
+        opacity: 1; }
+        .navbar-nfarm li a:hover:after, .navbar-nfarm li a:focus:after, .navbar-nfarm li a:visited:after {
+          -webkit-transform: translateY(0);
+          -moz-transform: translateY(0);
+          -ms-transform: translateY(0);
+          -o-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 1; }
+      .navbar-nfarm li a:after {
+        content: '';
+        position: absolute;
+        display: block;
+        left: 15px;
+        right: 15px;
+        bottom: 14px;
+        height: 2px;
+        background: #fff;
+        -webkit-transition: all 320ms ease;
+        -moz-transition: all 320ms ease;
+        -ms-transition: all 320ms ease;
+        -o-transition: all 320ms ease;
+        transition: all 320ms ease;
+        opacity: 0;
+        -webkit-transform: translateY(10px);
+        -moz-transform: translateY(10px);
+        -ms-transform: translateY(10px);
+        -o-transform: translateY(10px);
+        transform: translateY(10px); }
+    .navbar-nfarm li ul.dropdown-menu {
+      border: 0;
+      border-radius: 0;
+      background: rgba(0, 0, 0, 0.75); }
+      .navbar-nfarm li ul.dropdown-menu li {
+        display: block; }
+        .navbar-nfarm li ul.dropdown-menu li a:hover, .navbar-nfarm li ul.dropdown-menu li a:focus, .navbar-nfarm li ul.dropdown-menu li a:visited {
+          background: rgba(0, 0, 0, 0.25) !important;
+          color: #fff; }
 
 /*# sourceMappingURL=nfarm.css.map */
