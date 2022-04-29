@@ -9,14 +9,14 @@
 	========================
 */
 
-$contact = get_option( 'activate_contact' );
+$contact = get_option('activate_contact');
 
 if (@$contact == 1) {
-	add_action( 'init', 'nfarm_contact_custom_post_type' );
-    add_filter( 'manage_nfarm-contact_posts_columns', 'nfarm_set_contact_columns' );
-	add_action( 'manage_nfarm-contact_posts_custom_column', 'nfarm_contact_custom_column', 10, 2 );
-    add_action( 'add_meta_boxes', 'nfarm_contact_add_meta_box' );
-	add_action( 'save_post', 'nfarm_save_contact_email_data' );
+	add_action('init', 'nfarm_contact_custom_post_type');
+    add_filter('manage_nfarm-contact_posts_columns', 'nfarm_set_contact_columns');
+	add_action('manage_nfarm-contact_posts_custom_column', 'nfarm_contact_custom_column', 10, 2);
+    add_action('add_meta_boxes', 'nfarm_contact_add_meta_box');
+	add_action('save_post', 'nfarm_save_contact_email_data');
 }
 
 
@@ -112,5 +112,5 @@ function nfarm_save_contact_email_data($post_id)
 	}
 	
 	$my_data = sanitize_text_field($_POST['nfarm_contact_email_field']);	
-	update_post_meta( $post_id, '_contact_email_value_key', $my_data );
+	update_post_meta($post_id, '_contact_email_value_key', $my_data);
 }

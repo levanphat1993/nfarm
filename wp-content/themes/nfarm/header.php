@@ -50,7 +50,14 @@
 					<div class="nav-container">
 						<div class="container">
 							<nav class="navbar navbar-deafult navbar-nfarm">
-							
+							<?php
+									wp_nav_menu( array(
+										'theme_location' => 'primary',
+										'container' => false,
+										'menu_class' => 'nav navbar-nav',
+										'walker' => new Nfarm_Walker_Nav_Primary()
+									) );	
+							?>
 							</nav>
 						</div>
 					</div><!-- .nav-container -->
@@ -61,13 +68,6 @@
 		</div><!-- .row -->
 
 
-		<?php
-									wp_nav_menu( array(
-										'theme_location' => 'primary',
-										'container' => false,
-										'menu_class' => 'nav navbar-nav',
-										'walker' => new Nfarm_Walker_Nav_Primary()
-									) );	
-								?>
+
 		
 	</div><!-- .container-fluid -->
