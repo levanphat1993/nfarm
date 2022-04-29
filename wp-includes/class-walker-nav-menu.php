@@ -120,7 +120,7 @@ class Walker_Nav_Menu extends Walker {
 	public function start_el( &$output, $data_object, $depth = 0, $args = null, $current_object_id = 0 ) {
 		// Restores the more descriptive, specific name for use within this method.
 		$menu_item = $data_object;
-
+	
 		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
 			$t = '';
 			$n = '';
