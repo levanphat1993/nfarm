@@ -126,10 +126,14 @@ function nfarm_get_attachment()
 
 function nfarm_get_embedded_media($type=array())
 {
-	var_dump($type);
-
-	$content = do_shortcode(apply_filters('the_content', get_the_content()));
-	$embed = get_media_embedded_in_content($content, $type);
-	$output = str_replace('?visual=true', '?visual=false', $embed[0] );
+	$content = do_shortcode( apply_filters( 'the_content', get_the_content() ) );
+	$embed = get_media_embedded_in_content( $content, $type );
+	
+	if(in_array('audio' ,$type)) {
+		$output = str_replace( '?visual=true', '?visual=false', $embed[0] );
+	} else {
+		$output = $embed[0];
+	}
+	
 	return $output;
 }
