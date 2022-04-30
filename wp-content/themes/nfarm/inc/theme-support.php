@@ -170,3 +170,16 @@ function nfarm_get_bs_slides( $attachments ){
 	return $output;
 	
 }
+
+
+function nfarm_grab_url()
+{
+	if (!preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/i', get_the_content(), $links)) {
+		return false;
+	}
+	return esc_url_raw( $links[1] );
+}
+
+
+
+
