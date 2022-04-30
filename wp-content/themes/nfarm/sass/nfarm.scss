@@ -332,13 +332,56 @@ h1 { font-size: 48px; font-weight: 200;
 	Footer Section
 	------------------------------------------------
 */
-.nfarm-footer {
-	background-color: #333;
-	padding: 20px 0;
-	margin-top: 40px;
-	display: block;
+
+.nfarm-posts-container {
+	
+	article {
+		@include animate( all, 320ms );
+		@include transform( translateY(100px) );
+		opacity: 0;
+		
+		&.reveal {
+			@include transform( translateY(0) );
+			opacity: 1;
+		}
+		
+	}
+	
 }
 
+
+.nfarm-sunset-load {
+	display: block;
+	width: 200px;
+	color: #222;
+	font-size: 30px;
+	margin: 0 auto;
+	cursor: pointer;
+	opacity: 0.5;
+	@include animate( opacity, 320ms );
+	
+	&:hover,
+	&:focus,
+	&.loading {
+		opacity: 1;
+	}
+	
+	&.loading {
+		cursor: default;
+	}
+	
+	span {
+		display: block;
+	}
+	
+}
+
+.spin {
+	animation-name: spin;
+	animation-duration: 1000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
 
 
 

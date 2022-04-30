@@ -22,7 +22,7 @@
 						
 						$attachments = nfarm_get_bs_slides( nfarm_get_attachment(7) );
 						foreach( $attachments as $attachment ):
-                           
+						
 					?>
 					
 						<div class="item<?php echo $attachment['class']; ?> background-image standard-featured" style="background-image: url( <?php echo $attachment['url']; ?> );">

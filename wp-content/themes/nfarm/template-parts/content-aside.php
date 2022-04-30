@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'nfarm-format-aside' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( array('nfarm-format-aside')); ?>>
 	
 	<div class="aside-container">
 	
