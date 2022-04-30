@@ -96,30 +96,34 @@ function nfarm_posted_footer()
 }
 
 
-function nfarm_get_attachment()
+function nfarm_get_attachment($num = 1)
 {
 	
 	$output = '';
-
-	if (has_post_thumbnail()) {
-		$output = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID()));
+	if(has_post_thumbnail() && $num == 1) {
+		$output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
 	} else {
 		
-		$attachments = get_posts( array( 
+		$attachments = get_posts(array( 
 			'post_type' => 'attachment',
-			'posts_per_page' => 1,
+			'posts_per_page' => $num,
 			'post_parent' => get_the_ID()
 		));
 
-		if ($attachments) {
+		if($attachments && $num == 1) {
+			
 			foreach ($attachments as $attachment) {
 				$output = wp_get_attachment_url($attachment->ID);
 			}
+			
+		} elseif ($attachments && $num > 1) {
+			$output = $attachments;
 		}
-
+		
 		wp_reset_postdata();
+		
 	}
-
+	
 	return $output;
 }
 

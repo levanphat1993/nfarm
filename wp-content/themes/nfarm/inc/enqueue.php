@@ -71,6 +71,7 @@ function nfarm_load_scripts(){
 	wp_register_script( 'jquery' , get_template_directory_uri() . '/js/jquery.js', false, '1.11.3', true );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true );
+	wp_enqueue_script( 'nfarm', get_template_directory_uri() . '/js/nfarm.js', array('jquery'), '1.0.0', true );
 	
 }
 add_action( 'wp_enqueue_scripts', 'nfarm_load_scripts' );
