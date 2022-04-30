@@ -30,12 +30,16 @@ jQuery(document).ready( function($){
 	/* Ajax functions */
 	$(document).on('click','.nfarm-load-more:not(.loading)', function(){
 		
-
 		var that = $(this);
 		var page = $(this).data('page');
 		var newPage = page+1;
 		var ajaxurl = that.data('url');
-
+		var prev = that.data('prev');
+		
+		if( typeof prev === 'undefined' ){
+			prev = 0;
+		}
+		
 		that.addClass('loading').find('.text').slideUp(320);
 		that.find('.sunset-icon').addClass('spin');
 		
@@ -46,6 +50,7 @@ jQuery(document).ready( function($){
 			data : {
 				
 				page : page,
+				prev : prev,
 				action: 'nfarm_load_more'
 				
 			},
@@ -54,17 +59,41 @@ jQuery(document).ready( function($){
 			},
 			success : function( response ){
 				
-				setTimeout(function(){
+				if( response == 0 ){
+					
+					$('.nfarm-posts-container').append( '<div class="text-center"><h3>You reached the end of the line!</h3><p>No more posts to load.</p></div>' );
+					that.slideUp(320);
+					
+				} else {
+					
+					setTimeout(function(){
 				
-					that.data('page', newPage);
-					$('.nfarm-posts-container').append( response );
+						if( prev == 1 ){
+							$('.nfarm-posts-container').prepend( response );
+							newPage = page-1;
+						} else {
+							$('.nfarm-posts-container').append( response );
+						}
+						
+						if( newPage == 1 ){
+							
+							that.slideUp(320);
+							
+						} else {
+							
+							that.data('page', newPage);
+						
+							that.removeClass('loading').find('.text').slideDown(320);
+							that.find('.sunset-icon').removeClass('spin');
+							
+						}
+						
+						revealPosts();
+						
+					}, 1000);
 					
-					that.removeClass('loading').find('.text').slideDown(320);
-					that.find('.sunset-icon').removeClass('spin');
-					
-					revealPosts();
-					
-				}, 1000);
+				}
+				
 				
 			}
 			
@@ -111,7 +140,7 @@ jQuery(document).ready( function($){
 			if( i >= posts.length ) return false;
 			
 			var el = posts[i];
-			$(el).addClass('reveal').find('.sunset-carousel-thumb').carousel();
+			$(el).addClass('reveal').find('.nfarm-carousel-thumb').carousel();
 			
 			i++
 			

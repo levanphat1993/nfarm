@@ -11,6 +11,18 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+
+		<?php if( is_paged() ): ?>
+			
+			<div class="container text-center container-load-previous">
+				<a class="btn-nfarm-load nfarm-load-more" data-prev="1" data-page="<?php echo nfarm_check_paged(1); ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+					<span class="sunset-icon nfarm-loading"></span>
+					<span class="text">Load Previous</span>
+				</a>
+			</div><!-- .container -->
+			
+		<?php endif; ?>
+
 			<div class="container nfarm-posts-container">
 				<?php 
 					if (have_posts()) {
@@ -34,7 +46,7 @@ get_header(); ?>
 
 
 			<div class="container text-center">
-				<a class="nfarm-sunset-load nfarm-load-more" data-page="<?php echo nfarm_check_paged(1); ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+				<a class="btn-nfarm-load nfarm-load-more" data-page="<?php echo nfarm_check_paged(1); ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
 					<span class="sunset-icon nfarm-loading"></span>
 					<span class="text">Load More</span>
 				</a>
