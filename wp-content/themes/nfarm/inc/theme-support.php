@@ -96,26 +96,40 @@ function nfarm_posted_footer()
 }
 
 
-function nfarm_get_attachment(){
+function nfarm_get_attachment()
+{
 	
 	$output = '';
-	if(has_post_thumbnail()): 
-		$output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
-	else:
+
+	if (has_post_thumbnail()) {
+		$output = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID()));
+	} else {
+		
 		$attachments = get_posts( array( 
 			'post_type' => 'attachment',
 			'posts_per_page' => 1,
 			'post_parent' => get_the_ID()
-		) );
-		if($attachments):
-			foreach ( $attachments as $attachment ):
-				$output = wp_get_attachment_url( $attachment->ID );
-			endforeach;
-		endif;
-		
+		));
+
+		if ($attachments) {
+			foreach ($attachments as $attachment) {
+				$output = wp_get_attachment_url($attachment->ID);
+			}
+		}
+
 		wp_reset_postdata();
-		
-	endif;
-	
+	}
+
+	return $output;
+}
+
+
+function nfarm_get_embedded_media($type=array())
+{
+	var_dump($type);
+
+	$content = do_shortcode(apply_filters('the_content', get_the_content()));
+	$embed = get_media_embedded_in_content($content, $type);
+	$output = str_replace('?visual=true', '?visual=false', $embed[0] );
 	return $output;
 }

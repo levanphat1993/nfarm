@@ -3,15 +3,14 @@
 /*
 	
 @package nfarmtheme
--- Image Post Format
+-- Audio Post Format
 
 */
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'nfarm-format-image' ); ?>>
-	
-	<header class="entry-header text-center background-image" style="background-image: url(<?php echo nfarm_get_attachment(); ?>);">
+<article id="post-<?php the_ID(); ?>" <?php post_class('nfarm-format-audio'); ?>>
+	<header class="entry-header">
 		
 		<?php the_title( '<h1 class="entry-title"><a href="'. esc_url( get_permalink() ) .'" rel="bookmark">', '</a></h1>'); ?>
 		
@@ -19,11 +18,13 @@
 			<?php echo nfarm_posted_meta(); ?>
 		</div>
 		
-		<div class="entry-excerpt image-caption">
-			<?php the_excerpt(); ?>
-		</div>
-		
 	</header>
+	
+	<div class="entry-content">
+		
+		<?php echo nfarm_get_embedded_media( array('audio','iframe') ); ?>
+		
+	</div><!-- .entry-content -->
 	
 	<footer class="entry-footer">
 		<?php echo nfarm_posted_footer(); ?>
