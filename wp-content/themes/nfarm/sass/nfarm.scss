@@ -227,5 +227,15 @@ h1 { font-size: 48px; font-weight: 200;
 		}
 		
 	}
+	.entry-excerpt {
+		&.image-caption { @include animate( transform, 320ms ); @include transform( translateY(100%) ); }
+	}
+	
+	&:hover {
+		.entry-excerpt {
+			&.image-caption { @include transform( translateY(3) ); }
+		}
+		
+	}
 	
 }

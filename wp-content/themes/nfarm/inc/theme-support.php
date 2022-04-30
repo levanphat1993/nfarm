@@ -115,7 +115,7 @@ function nfarm_get_attachment($num = 1)
 			foreach ($attachments as $attachment) {
 				$output = wp_get_attachment_url($attachment->ID);
 			}
-			
+
 		} elseif ($attachments && $num > 1) {
 			$output = $attachments;
 		}
@@ -140,4 +140,33 @@ function nfarm_get_embedded_media($type=array())
 	}
 	
 	return $output;
+}
+
+
+function nfarm_get_bs_slides( $attachments ){
+	
+	$output = array();
+	$count = count($attachments)-1;
+	
+	for( $i = 0; $i <= $count; $i++ ): 
+	
+		$active = ( $i == 0 ? ' active' : '' );
+		
+		$n = ( $i == $count ? 0 : $i+1 );
+		$nextImg = wp_get_attachment_thumb_url( $attachments[$n]->ID );
+		$p = ( $i == 0 ? $count : $i-1 );
+		$prevImg = wp_get_attachment_thumb_url( $attachments[$p]->ID );
+		
+		$output[$i] = array( 
+			'class'		=> $active, 
+			'url'		=> wp_get_attachment_url( $attachments[$i]->ID ),
+			'next_img'	=> $nextImg,
+			'prev_img'	=> $prevImg,
+			'caption'	=> $attachments[$i]->post_excerpt
+		);
+	
+	endfor;
+	
+	return $output;
+	
 }
