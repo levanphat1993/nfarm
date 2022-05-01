@@ -138,7 +138,11 @@ jQuery(document).ready( function($){
 	});
 
 	/* helper functions */
-	function revealPosts(){
+	function revealPosts()
+	{
+		
+		$('[data-toggle="tooltip"]').tooltip();
+		$('[data-toggle="popover"]').popover();
 		
 		var posts = $('article:not(.reveal)');
 		var i = 0;
@@ -157,7 +161,8 @@ jQuery(document).ready( function($){
 		
 	}
 
-	function isVisible( element ){
+	function isVisible( element )
+	{
 		
 		var scroll_pos = $(window).scrollTop();
 		var window_height = $(window).height();

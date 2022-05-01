@@ -415,6 +415,19 @@ h1 { font-size: 48px; font-weight: 200;
 	font-weight: 300;
 	line-height: 1.7em;
 	
+	a,
+	.nfarm-tooltip,
+	.nfarm-popover  {
+		cursor: pointer;
+		color: #ff9d1d;
+		
+		&:hover,
+		&:focus {
+			color: #F56B08;
+		}
+		
+	}
+	
 	p {
 		margin-bottom: 15px;
 	}
@@ -425,5 +438,20 @@ h1 { font-size: 48px; font-weight: 200;
 	}
 	
 }
+
+.post-link-nav {
+	padding: 10px 0;
+	
+	a {
+		padding: 0 5px;
+		
+		&:hover,
+		&:focus {
+			color: #ff9d1d;
+		}
+	}
+	
+}
+
 
 
