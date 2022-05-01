@@ -17,7 +17,7 @@ function nfarm_load_more()
 	$prev = $_POST["prev"];
 	$archive = $_POST["archive"];
 	
-	if ($prev == 1 && $_POST["page"] != 1) {
+	if( $prev == 1 && $_POST["page"] != 1 ){
 		$paged = $_POST["page"]-1;
 	}
 	
@@ -27,42 +27,38 @@ function nfarm_load_more()
 		'paged' => $paged
 	);
 	
-	if ($archive != '0') {
+	if( $archive != '0' ){
 		
-		$archVal = explode('/', $archive);
+		$archVal = explode( '/', $archive );
+		$flipped = array_flip($archVal);
 		
-		if (in_array("category", $archVal)) {
+		switch( isset( $flipped ) ) {
 			
-			$type = "category_name";
-			$currKey = array_keys($archVal, "category");
-			$nextKey = $currKey[0]+1;
-			$value = $archVal[$nextKey];
-			$args[$type] = $value;
+			case $flipped["category"] :
+				$type = "category_name";
+				$key = "category";
+				break;
+				
+			case $flipped["tag"] :
+				$type = "tag";
+				$key = $type;
+				break;
+				
+			case $flipped["author"] :
+				$type = "author";
+				$key = $type;
+				break;
 			
 		}
 		
-		if (in_array("tag", $archVal)) {
+		$currKey = array_keys( $archVal, $key );
+		$nextKey = $currKey[0]+1;
+		$value = $archVal[ $nextKey ];
 			
-			$type = "tag";
-			$currKey = array_keys( $archVal, "tag" );
-			$nextKey = $currKey[0]+1;
-			$value = $archVal[ $nextKey ];
-			$args[ $type ] = $value;
-			
-		}
-		
-		if (in_array("author", $archVal)) {
-			
-			$type = "author";
-			$currKey = array_keys($archVal, "author");
-			$nextKey = $currKey[0]+1;
-			$value = $archVal[$nextKey];
-			$args[$type] = $value;
-			
-		}
+		$args[ $type ] = $value;
 		
 		//check page trail and remove "page" value
-		if(in_array("page", $archVal)) {
+		if( isset( $flipped["page"] ) ){
 			
 			$pageVal = explode( 'page', $archive );
 			$page_trail = $pageVal[0];
@@ -75,23 +71,7 @@ function nfarm_load_more()
 		$page_trail = '/';
 	}
 	
-	$query = new WP_Query($args);
-
-	if ($query->have_posts()) {
-
-		echo '<div class="page-limit" data-page="' . $page_trail . 'page/' . $paged . '/">';
-		while ($query->have_posts()) {
-			$query->the_post();
-			get_template_part('template-parts/content', get_post_format());
-		}
-		echo '</div>';
-	} else {
-		echo 0;
-	}
-
-	wp_reset_postdata();
-	die();
-
+	$query = new WP_Query( $args );
 	
 	if( $query->have_posts() ):
 		
@@ -112,6 +92,7 @@ function nfarm_load_more()
 	endif;
 	
 	wp_reset_postdata();
+	
 	die();
 }
 
