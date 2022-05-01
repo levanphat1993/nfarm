@@ -17,13 +17,13 @@
 		<?php if(is_paged()) { ?>
 			
 			<div class="container text-center container-load-previous">
-            <a class="btn-sunset-load sunset-load-more"
+            <a class="btn-nfarm-load sunset-nfarm-more"
                 data-prev="1" 
                 data-archive="<?php echo nfarm_grab_current_uri(); ?>" 
                 data-page="<?php echo nfarm_check_paged(1); ?>" 
                 data-url="<?php echo admin_url('admin-ajax.php'); ?>">
 
-					<span class="sunset-icon nfarm-loading"></span>
+					<span class="nfarm-icon nfarm-loading"></span>
 					<span class="text">Load Previous</span>
 				</a>
 			</div><!-- .container -->
@@ -61,7 +61,7 @@
                 data-page="<?php echo nfarm_check_paged(1); ?>" 
                 data-archive="<?php echo nfarm_grab_current_uri(); ?>" 
                 data-url="<?php echo admin_url('admin-ajax.php'); ?>">
-					<span class="sunset-icon nfarm-loading"></span>
+					<span class="nfarm-icon nfarm-loading"></span>
 					<span class="text">Load More</span>
 				</a>
 			</div><!-- .container -->

@@ -17,17 +17,17 @@ foreach ($formats as $format) {
 }
 
 if (!empty($options)) {
-	add_theme_support( 'post-formats', $output );
+	add_theme_support('post-formats', $output);
 }
 
-$header = get_option( 'custom_header' );
+$header = get_option('custom_header');
 if (@$header == 1) {
-	add_theme_support( 'custom-header' );
+	add_theme_support('custom-header');
 }
 
-$background = get_option( 'custom_background' );
+$background = get_option('custom_background');
 if (@$background == 1) {
-	add_theme_support( 'custom-background' );
+	add_theme_support('custom-background');
 }
 
 
@@ -143,8 +143,8 @@ function nfarm_get_embedded_media($type=array())
 }
 
 
-function nfarm_get_bs_slides( $attachments ){
-	
+function nfarm_get_bs_slides( $attachments )
+{	
 	$output = array();
 	$count = count($attachments)-1;
 
@@ -199,9 +199,6 @@ function nfarm_grab_current_uri()
 */
 function nfarm_post_navigation()
 {
-
-
-
 	$nav = '<div class="row">';
 	
 	$prev = get_previous_post_link( '<div class="post-link-nav"><span class="sunset-icon nfarm-chevron-left" aria-hidden="true"></span> %link</div>', '%title');
@@ -212,7 +209,36 @@ function nfarm_post_navigation()
 	
 	$nav .= '</div>';
 	
-	return $nav;
+	return $nav;	
+}
+
+function nfarm_share_this($content)
+{
+	if (is_single()) {
+	
+		$content .= '<div class="nfarm-shareThis"><h4>Share This</h4>';
+				
+		$title = get_the_title();
+		$permalink = get_permalink();
+		
+		$twitterHandler = (get_option('twitter_handler') ? '&amp;via='.esc_attr(get_option('twitter_handler')) : '');
+		
+		$twitter = 'https://twitter.com/intent/tweet?text=Hey! Read this: ' . $title . '&amp;url=' . $permalink . $twitterHandler .'';
+		$facebook = 'https://www.facebook.com/sharer/sharer.php?u=' . $permalink;
+		$google = 'https://plus.google.com/share?url=' . $permalink;
+			
+		$content .= '<ul>';
+		$content .= '<li><a href="' . $twitter . '" target="_blank" rel="nofollow"><span class="nfarm-icon nfarm-twitter"></span></a></li>';
+		$content .= '<li><a href="' . $facebook . '" target="_blank" rel="nofollow"><span class="nfarm-icon nfarm-facebook"></span></a></li>';
+		$content .= '<li><a href="' . $google . '" target="_blank" rel="nofollow"><span class="nfarm-icon nfarm-googleplus"></span></a></li>';
+		$content .= '</ul></div><!-- .nfarm-share -->';
+		
+		return $content;
+	
+	} else {
+		return $content;
+	}
 	
 }
+add_filter('the_content', 'nfarm_share_this');
 

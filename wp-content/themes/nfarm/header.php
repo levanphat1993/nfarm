@@ -39,7 +39,7 @@
 				
 				<div class="header-content table">
 					<div class="table-cell">
-						<h1 class="site-title sunset-icon">
+						<h1 class="site-title nfarm-icon">
 							<span class="nfarm-logo"></span>
 							<span class="hide"><?php bloginfo( 'name' ); ?></span>
 						</h1>

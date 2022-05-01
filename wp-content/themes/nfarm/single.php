@@ -1,8 +1,10 @@
-<?php /*
-	
-@package nfarmtheme
+<?php 
 
-*/
+	/*
+		
+	@package nfarmtheme
+
+	*/
 
 get_header(); ?>
 	
@@ -28,7 +30,6 @@ get_header(); ?>
 										comments_template();
 									}
 										
-								
 								}
 								
 							}

@@ -40,7 +40,7 @@
 		</div>
 		
 		<div class="button-container text-center">
-			<a href="<?php the_permalink(); ?>" class="btn btn-sunset"><?php _e( 'Read More' ); ?></a>
+			<a href="<?php the_permalink(); ?>" class="btn btn-nfarm"><?php _e( 'Read More' ); ?></a>
 		</div>
 		
 	</div><!-- .entry-content -->

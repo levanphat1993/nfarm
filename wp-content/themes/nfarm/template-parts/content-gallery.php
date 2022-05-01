@@ -46,7 +46,7 @@
 							
 							<div class="preview-container">
 								<span class="thumbnail-container background-image"></span>
-								<span class="sunset-icon nfarm-chevron-left" aria-hidden="true"></span>
+								<span class="nfarm-icon nfarm-chevron-left" aria-hidden="true"></span>
 								<span class="sr-only">Previous</span>
 							</div><!-- .preview-container -->
 							
@@ -60,7 +60,7 @@
 							
 							<div class="preview-container">
 								<span class="thumbnail-container background-image"></span>
-								<span class="sunset-icon nfarm-chevron-right" aria-hidden="true"></span>
+								<span class="nfarm-icon nfarm-chevron-right" aria-hidden="true"></span>
 								<span class="sr-only">Next</span>
 							</div><!-- .preview-container -->
 							

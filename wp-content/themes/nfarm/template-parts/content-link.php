@@ -15,7 +15,7 @@
 		
 		<?php 
 			$link = nfarm_grab_url();
-			the_title( '<h1 class="entry-title"><a href="' . $link . '" target="_blank">', '<div class="link-icon"><span class="sunset-icon nfarm-link"></span></div></a></h1>'); 
+			the_title( '<h1 class="entry-title"><a href="' . $link . '" target="_blank">', '<div class="link-icon"><span class="nfarm-icon nfarm-link"></span></div></a></h1>'); 
 		?>
 		
 	</header>
