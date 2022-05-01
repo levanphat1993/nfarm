@@ -41,6 +41,8 @@ function nfarm_register_nav_menu()
 }
 add_action('after_setup_theme', 'nfarm_register_nav_menu');
 
+/* Activate HTML5 features */
+add_theme_support('html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ));
 
 /*
 	========================
@@ -201,10 +203,10 @@ function nfarm_post_navigation()
 {
 	$nav = '<div class="row">';
 	
-	$prev = get_previous_post_link( '<div class="post-link-nav"><span class="sunset-icon nfarm-chevron-left" aria-hidden="true"></span> %link</div>', '%title');
+	$prev = get_previous_post_link('<div class="post-link-nav"><span class="nfarm-icon nfarm-chevron-left" aria-hidden="true"></span> %link</div>', '%title');
 	$nav .= '<div class="col-xs-12 col-sm-6">' . $prev . '</div>';
 	
-	$next = get_next_post_link( '<div class="post-link-nav">%link <span class="sunset-icon nfarm-chevron-right" aria-hidden="true"></span></div>', '%title' );
+	$next = get_next_post_link('<div class="post-link-nav">%link <span class="nfarm-icon nfarm-chevron-right" aria-hidden="true"></span></div>', '%title' );
 	$nav .= '<div class="col-xs-12 col-sm-6 text-right">' . $next . '</div>';
 	
 	$nav .= '</div>';
@@ -241,4 +243,14 @@ function nfarm_share_this($content)
 	
 }
 add_filter('the_content', 'nfarm_share_this');
+
+function nfarm_get_post_navigation(){
+	
+	if(get_comment_pages_count() > 1 && get_option('page_comments')) {
+	
+		require( get_template_directory() . '/inc/templates/nfarm-comment-nav.php' );
+	
+	}
+	
+}
 
