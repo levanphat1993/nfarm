@@ -8,22 +8,30 @@ jQuery(document).ready( function($){
 	var carousel = '.nfarm-carousel-thumb';
 	var last_scroll = 0;
 
-	nfarm_get_bs_thumbs(carousel);
 
-	$(carousel).on('slid.bs.carousel', function(){
-		nfarm_get_bs_thumbs(carousel);
-	});
-	
-	function nfarm_get_bs_thumbs( carousel ){
-	
-		$(carousel).each(function(){
+	/* carousel functions */
+	$(document).on('click', '.nfarm-carousel-thumb', function() {
+
+    	var id = $("#" + $(this).attr("id"));
+    	$(id).on('slid.bs.carousel', function () { 
+	    	nfarm_get_bs_thumbs(id);
+    	});
+
+    });
+
+	$(document).on('mouseenter', '.nfarm-carousel-thumb', function() {
+
+    	var id = $("#" + $(this).attr("id"));
+        nfarm_get_bs_thumbs(id);
+
+    });
+
+	function nfarm_get_bs_thumbs( id ){
 			
-			var nextThumb = $(this).find('.item.active').find('.next-image-preview').data('image');
-			var prevThumb = $(this).find('.item.active').find('.prev-image-preview').data('image');
-			$(this).find('.carousel-control.right').find('.thumbnail-container').css({ 'background-image' : 'url('+nextThumb+')' });
-			$(this).find('.carousel-control.left').find('.thumbnail-container').css({ 'background-image' : 'url('+prevThumb+')' });
-			
-		});
+		var nextThumb = $(id).find(".item.active").find(".next-image-preview").data("image");
+        var prevThumb = $(id).find(".item.active").find(".prev-image-preview").data("image");
+        $(id).find(".right.carousel-control").find(".thumbnail-container").css({"background-image" : "url("+ nextThumb +")"});
+        $(id).find(".left.carousel-control").find(".thumbnail-container").css({"background-image" : "url("+ prevThumb +")"});
 		
 	}
 
@@ -110,26 +118,21 @@ jQuery(document).ready( function($){
 	$(window).scroll( function(){
 		
 		var scroll = $(window).scrollTop();
-
-
-		console.log(scroll);
-			
+		
 		if( Math.abs( scroll - last_scroll ) > $(window).height()*0.1 ) {
-			
 			last_scroll = scroll;
-				
+			
 			$('.page-limit').each(function( index ){
 				
-				
 				if( isVisible( $(this) ) ){
-						
+					
 					history.replaceState( null, null, $(this).attr("data-page") );
 					return(false);
-						
-				}
 					
-			});
+				}
 				
+			});
+			
 		}
 			
 	});
