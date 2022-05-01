@@ -147,39 +147,49 @@ function nfarm_get_bs_slides( $attachments ){
 	
 	$output = array();
 	$count = count($attachments)-1;
-	
-	for( $i = 0; $i <= $count; $i++ ): 
-	
-		$active = ( $i == 0 ? ' active' : '' );
+
+	for ($i=0; $i <= $count; $i++) {
 		
-		$n = ( $i == $count ? 0 : $i+1 );
-		$nextImg = wp_get_attachment_thumb_url( $attachments[$n]->ID );
-		$p = ( $i == 0 ? $count : $i-1 );
-		$prevImg = wp_get_attachment_thumb_url( $attachments[$p]->ID );
+		$active = (($i == 0) ? ' active' : '');
+		$n = (($i === 0) ? 0 : ($i + 1));
+		$nextImg = wp_get_attachment_thumb_url($attachments[$n]->ID ?? null);
+		$p = (($i == 0) ? $count : ($i-1));
+		$prevImg = wp_get_attachment_thumb_url($attachments[$p]->ID ?? null);
+	
 		
 		$output[$i] = array( 
 			'class'		=> $active, 
-			'url'		=> wp_get_attachment_url( $attachments[$i]->ID ),
+			'url'		=> wp_get_attachment_url($attachments[$i]->ID ?? null),
 			'next_img'	=> $nextImg,
 			'prev_img'	=> $prevImg,
-			'caption'	=> $attachments[$i]->post_excerpt
+			'caption'	=> ($attachments[$i]->post_excerpt ?? '')
 		);
-	
-	endfor;
+		
+	}
 	
 	return $output;
-	
 }
 
 
 function nfarm_grab_url()
 {
-	if (!preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/i', get_the_content(), $links)) {
+	$pattern = '/<a\s[^>]*?href=[\'"](.+?)[\'"]/i';
+
+	if (!preg_match($pattern, get_the_content(), $links)) {
 		return false;
 	}
-	return esc_url_raw( $links[1] );
+
+	return esc_url_raw($links[1] ?? '');
 }
 
+function nfarm_grab_current_uri()
+{
+	$http = (isset($_SERVER["HTTPS"]) ? 'https://' : 'http://' );
+	$referer = $http . $_SERVER["HTTP_HOST"];
+	$archive_url = $referer . $_SERVER["REQUEST_URI"];
+	
+	return $archive_url;
+}
 
 
 
