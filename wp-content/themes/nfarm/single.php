@@ -16,21 +16,22 @@ get_header(); ?>
 					
 						<?php 
 							
-							if( have_posts() ):
+							if(have_posts()) {
 								
-								while( have_posts() ): the_post();
+								while(have_posts()) { 
 									
-									get_template_part( 'template-parts/single', get_post_format() );
+									the_post();
+									get_template_part('template-parts/single', get_post_format());
+									echo nfarm_post_navigation();
 									
-									the_post_navigation();
-									
-									if ( comments_open() ):
+									if (comments_open()) {
 										comments_template();
-									endif;
+									}
+										
 								
-								endwhile;
+								}
 								
-							endif;
+							}
 		                
 						?>
 						
