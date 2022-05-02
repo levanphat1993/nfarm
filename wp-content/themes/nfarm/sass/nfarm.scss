@@ -630,6 +630,16 @@ a.comment-reply-link {
 		@include transform( translateX( 100% ) );
 	}
 	
+	a {
+		color: #bababa;
+		
+		&:hover,
+		&:focus {
+			color: #fff;
+		}
+		
+	}
+	
 }
 
 .nfarm-sidebar-container {
@@ -662,4 +672,39 @@ a.comment-reply-link {
 	font-size: 10px;
 }
 
+/* 
+	Widgets section
+	------------------------------------------------
+*/
 
+.nfarm-widget {
+	margin: 30px 0 50px;
+	padding: 0 20px;
+}
+
+h2.nfarm-widget-title {
+	display: block;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 300;
+	background-color: #303030;
+	padding: 8px;
+	border-radius: 20px;
+	line-height: 1em;
+	margin-bottom: 20px;
+	letter-spacing: 0.2px;
+}
+
+
+// Tags Cloud Widget
+.tagcloud {
+	text-align: center;
+	a {
+		display: inline-block;
+		background-color: #7D7D7D;
+		padding: 1px 9px;
+		border-radius: 10px;
+		color: #eee;
+	}
+	
+}
