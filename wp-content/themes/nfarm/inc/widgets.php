@@ -175,24 +175,27 @@ class Nfarm_Popular_Posts_Widget extends WP_Widget
 		
 		echo $args['before_widget'];
 		
-		if (!empty( $instance[ 'title' ])) {
+		if (!empty($instance['title'])) {
 			
-			echo $args[ 'before_title' ] . apply_filters( 'widget_title', $instance[ 'title' ] ) . $args[ 'after_title' ];
+			echo $args['before_title'] . apply_filters('widget_title', $instance[ 'title' ]) . $args['after_title'];
 			
 		}
 		
-		if ($posts_query->have_posts()) {
+		if($posts_query->have_posts()) {
 		
-			echo '<ul>';
+			//echo '<ul>';
 				
-				while ($posts_query->have_posts()) { 
+			while($posts_query->have_posts()) { 
 				
-					$posts_query->the_post();
-					echo '<li>' . get_the_title() . '</li>';
-					
-				}
+				$posts_query->the_post();
+				echo '<div class="media">';
+				echo '<div class="media-left"><img class="media-object" src="' . get_template_directory_uri() . '/img/post-' . ( get_post_format() ? get_post_format() : 'standard') . '.png" alt="' . get_the_title() . '"/></div>';
+				echo '<div class="media-body">' . get_the_title() . '</div>';
+				echo '</div>';
 				
-			echo '</ul>';
+			}
+				
+			//echo '</ul>';
 		
 		}
 		
