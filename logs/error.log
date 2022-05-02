@@ -42,3 +42,117 @@ Stack trace" while reading upstream, client: 127.0.0.1, server: nfarm.loc, reque
   thrown in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-audio.php on line 18" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/29/audio-post/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=88&action=edit"
 2022/04/30 08:28:09 [error] 217234#217234: *504 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Cannot redeclare nfarm_get_attachment() (previously declared in /var/www/nfarm/wp-content/themes/nfarm/inc/theme-support.php:99) in /var/www/nfarm/wp-content/themes/nfarm/inc/theme-support.php on line 123PHP message: PHP Stack trace:PHP message: PHP   1. {main}() /var/www/nfarm/wp-admin/admin-ajax.php:0PHP message: PHP   2. require_once() /var/www/nfarm/wp-admin/admin-ajax.php:22PHP message: PHP   3. require_once() /var/www/nfarm/wp-load.php:50PHP message: PHP   4. require_once() /var/www/nfarm/wp-config.php:96PHP message: PHP   5. include() /var/www/nfarm/wp-settings.php:555" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=88&action=edit"
 2022/04/30 08:30:10 [error] 217234#217234: *506 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Cannot redeclare nfarm_get_attachment() (previously declared in /var/www/nfarm/wp-content/themes/nfarm/inc/theme-support.php:99) in /var/www/nfarm/wp-content/themes/nfarm/inc/theme-support.php on line 123PHP message: PHP Stack trace:PHP message: PHP   1. {main}() /var/www/nfarm/wp-admin/admin-ajax.php:0PHP message: PHP   2. require_once() /var/www/nfarm/wp-admin/admin-ajax.php:22PHP message: PHP   3. require_once() /var/www/nfarm/wp-load.php:50PHP message: PHP   4. require_once() /var/www/nfarm/wp-config.php:96PHP message: PHP   5. include() /var/www/nfarm/wp-settings.php:555" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=88&action=edit"
+2022/04/30 10:34:49 [warn] 217235#217235: *707 a client request body is buffered to a temporary file /var/lib/nginx/body/0000000007, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/async-upload.php HTTP/1.1", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=109&action=edit"
+2022/04/30 10:34:50 [warn] 217235#217235: *707 a client request body is buffered to a temporary file /var/lib/nginx/body/0000000008, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/async-upload.php HTTP/1.1", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=109&action=edit"
+2022/04/30 10:34:50 [warn] 217235#217235: *707 a client request body is buffered to a temporary file /var/lib/nginx/body/0000000009, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/async-upload.php HTTP/1.1", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=109&action=edit"
+2022/04/30 10:38:03 [error] 217234#217234: *773 FastCGI sent in stderr: "PHP message: PHP Warning:  Invalid argument supplied for foreach() in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php on line 26PHP me" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=109&action=edit"
+2022/04/30 10:38:03 [error] 217234#217234: *773 FastCGI sent in stderr: "ssage: PHP Stack trace:PHP message: PHP   1. {main}() /var/www/nfarm/index.php:0PHP message: PHP   2. require() /var/www/nfarm/index.php:18PHP message: PHP   3. require_once() /var/www/nfarm/wp-blog-header.php:19PHP message: PHP   4. include() /var/www/nfarm/wp-includes/template-loader.php:106PHP message: PHP   5. get_template_part($slug = 'template-parts/content', $name = 'gallery', $args = *uninitialized*) /var/www/nfarm/wp-content/themes/nfarm/index.php:19PHP message: PHP   6. locate_template($template_names = [0 => 'template-parts/content-gallery.php', 1 => 'template-parts/content.php'], $load = TRUE, $require_once = FALSE, $args = []) /var/www/nfarm/wp-includes/general-template.php:204PHP message: PHP   7. load_template($_template_file = '/var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php', $require_once = FALSE, $args = []) /var/www/nfarm/wp-includes/template.php:716PHP message: PHP   8. require() /var/www/nfarm/wp-includes/template.php:772" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=109&action=edit"
+2022/04/30 10:38:03 [error] 217234#217234: *773 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function sunset_posted_meta() in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php:52
+Stack trace:
+#0 /var/www/nfarm/wp-includes/template.php(772): require()
+#1 /var/www/nfarm/wp-includes/template.php(716): load_template()
+#2 /var/www/nfarm/wp-includes/general-template.php(204): locate_template()
+#3 /var/www/nfarm/wp-content/themes/nfarm/index.php(19): get_template_part()
+#4 /var/www/nfarm/wp-includes/template-loader.php(106): include('/var/www/nfarm/...')
+#5 /var/www/nfarm/wp-blog-header.php(19): require_once('/var/www/nfarm/...')
+#6 /var/www/nfarm/index.php(18): require('/var/www/nfarm/...')
+#7 {main}
+  thrown in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php on line 52" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=109&action=edit"
+2022/04/30 10:40:43 [error] 217234#217234: *777 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function sunset_posted_meta() in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php:52
+Stack trace:
+#0 /var/www/nfarm/wp-includes/template.php(772): require()
+#1 /var/www/nfarm/wp-includes/template.php(716): load_template()
+#2 /var/www/nfarm/wp-includes/general-template.php(204): locate_template()
+#3 /var/www/nfarm/wp-content/themes/nfarm/index.php(19): get_template_part()
+#4 /var/www/nfarm/wp-includes/template-loader.php(106): include('/var/www/nfarm/...')
+#5 /var/www/nfarm/wp-blog-header.php(19): require_once('/var/www/nfarm/...')
+#6 /var/www/nfarm/index.php(18): require('/var/www/nfarm/...')
+#7 {main}
+  thrown in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php on line 52" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=109&action=edit"
+2022/04/30 10:41:46 [error] 217234#217234: *777 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function sunset_posted_meta() in /var/www/nfarm/wp-content/themes/nfarm" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=109&action=edit"
+2022/04/30 10:41:46 [error] 217234#217234: *777 FastCGI sent in stderr: "/template-parts/content-gallery.php:51
+Stack trace:
+#0 /var/www/nfarm/wp-includes/template.php(772): require()
+#1 /var/www/nfarm/wp-includes/template.php(716): load_template()
+#2 /var/www/nfarm/wp-includes/general-template.php(204): locate_template()
+#3 /var/www/nfarm/wp-content/themes/nfarm/index.php(19): get_template_part()
+#4 /var/www/nfarm/wp-includes/template-loader.php(106): include('/var/www/nfarm/...')
+#5 /var/www/nfarm/wp-blog-header.php(19): require_once('/var/www/nfarm/...')
+#6 /var/www/nfarm/index.php(18): require('/var/www/nfarm/...')
+#7 {main}
+  thrown in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php on line 51" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/post.php?post=109&action=edit"
+2022/04/30 13:50:26 [error] 217234#217234: *859 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function nfram_get_bs_slides() in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/2022/04/30/gallery-post-title/"
+2022/04/30 13:50:26 [error] 217234#217234: *859 FastCGI sent in stderr: "-gallery.php:23
+Stack trace:
+#0 /var/www/nfarm/wp-includes/template.php(772): require()
+#1 /var/www/nfarm/wp-includes/template.php(716): load_template()
+#2 /var/www/nfarm/wp-includes/general-template.php(204): locate_template()
+#3 /var/www/nfarm/wp-content/themes/nfarm/index.php(19): get_template_part()
+#4 /var/www/nfarm/wp-includes/template-loader.php(106): include('/var/www/nfarm/...')
+#5 /var/www/nfarm/wp-blog-header.php(19): require_once('/var/www/nfarm/...')
+#6 /var/www/nfarm/index.php(18): require('/var/www/nfarm/...')
+#7 {main}
+  thrown in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php on line 23" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/2022/04/30/gallery-post-title/"
+2022/04/30 14:01:06 [error] 217234#217234: *955 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function sunset_posted_footer() in /var/www/nfarm/wp-content/th" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/2022/04/30/gallery-post-title/"
+2022/04/30 14:01:06 [error] 217234#217234: *955 FastCGI sent in stderr: "emes/nfarm/template-parts/content-gallery.php:94
+Stack trace:
+#0 /var/www/nfarm/wp-includes/template.php(772): require()
+#1 /var/www/nfarm/wp-includes/template.php(716): load_template()
+#2 /var/www/nfarm/wp-includes/general-template.php(204): locate_template()
+#3 /var/www/nfarm/wp-content/themes/nfarm/index.php(19): get_template_part()
+#4 /var/www/nfarm/wp-includes/template-loader.php(106): include('/var/www/nfarm/...')
+#5 /var/www/nfarm/wp-blog-header.php(19): require_once('/var/www/nfarm/...')
+#6 /var/www/nfarm/index.php(18): require('/var/www/nfarm/...')
+#7 {main}
+  thrown in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php on line 94" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/2022/04/30/gallery-post-title/"
+2022/04/30 14:01:09 [error] 217234#217234: *959 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function sunset_posted_footer() in /var/www/nfarm/wp-content/th" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/2022/04/30/gallery-post-title/"
+2022/04/30 14:01:09 [error] 217234#217234: *959 FastCGI sent in stderr: "emes/nfarm/template-parts/content-gallery.php:94
+Stack trace:
+#0 /var/www/nfarm/wp-includes/template.php(772): require()
+#1 /var/www/nfarm/wp-includes/template.php(716): load_template()
+#2 /var/www/nfarm/wp-includes/general-template.php(204): locate_template()
+#3 /var/www/nfarm/wp-content/themes/nfarm/index.php(19): get_template_part()
+#4 /var/www/nfarm/wp-includes/template-loader.php(106): include('/var/www/nfarm/...')
+#5 /var/www/nfarm/wp-blog-header.php(19): require_once('/var/www/nfarm/...')
+#6 /var/www/nfarm/index.php(18): require('/var/www/nfarm/...')
+#7 {main}
+  thrown in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php on line 94" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/2022/04/30/gallery-post-title/"
+2022/04/30 14:01:10 [error] 217234#217234: *959 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function sunset_posted_footer() in /var/www/nfarm/wp-content/th" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/2022/04/30/gallery-post-title/"
+2022/04/30 14:01:10 [error] 217234#217234: *959 FastCGI sent in stderr: "emes/nfarm/template-parts/content-gallery.php:94
+Stack trace:
+#0 /var/www/nfarm/wp-includes/template.php(772): require()
+#1 /var/www/nfarm/wp-includes/template.php(716): load_template()
+#2 /var/www/nfarm/wp-includes/general-template.php(204): locate_template()
+#3 /var/www/nfarm/wp-content/themes/nfarm/index.php(19): get_template_part()
+#4 /var/www/nfarm/wp-includes/template-loader.php(106): include('/var/www/nfarm/...')
+#5 /var/www/nfarm/wp-blog-header.php(19): require_once('/var/www/nfarm/...')
+#6 /var/www/nfarm/index.php(18): require('/var/www/nfarm/...')
+#7 {main}
+  thrown in /var/www/nfarm/wp-content/themes/nfarm/template-parts/content-gallery.php on line 94" while reading upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/gallery-post-title/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/2022/04/30/gallery-post-title/"
+2022/05/02 11:43:48 [error] 217234#217234: *4215 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected 'endif' (T_ENDIF) in /var/www/nfarm/wp-content/themes/nfarm/inc/widgets.php on line 57" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET /2022/04/30/aside-post-format/ HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/edit.php"
+2022/05/02 11:59:31 [error] 217234#217234: *4319 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /var/www/nfarm/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /var/www/nfarm/index.php on line 7" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/widgets.php"
+2022/05/02 11:59:40 [error] 217234#217234: *4319 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /var/www/nfarm/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /var/www/nfarm/index.php on line 7" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/widgets.php"
+2022/05/02 11:59:40 [error] 217234#217234: *4319 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /var/www/nfarm/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /var/www/nfarm/index.php on line 7" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/widgets.php"
+2022/05/02 11:59:41 [error] 217234#217234: *4319 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /var/www/nfarm/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /var/www/nfarm/index.php on line 7" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/widgets.php"
+2022/05/02 11:59:41 [error] 217234#217234: *4319 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /var/www/nfarm/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /var/www/nfarm/index.php on line 7" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/widgets.php"
+2022/05/02 12:13:04 [error] 217235#217235: *4454 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected 'die' (T_EXIT), expecting function (T_FUNCTION) or const (T_CONST) in /var/www/nfarm/wp-content/themes/nfarm/inc/widgets.php on line 13" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/"
+2022/05/02 12:13:07 [error] 217235#217235: *4454 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected 'die' (T_EXIT), expecting function (T_FUNCTION) or const (T_CONST) in /var/www/nfarm/wp-content/themes/nfarm/inc/widgets.php on line 13" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/wp-admin/widgets.php"
+2022/05/02 14:55:03 [error] 217234#217234: *4790 FastCGI sent in stderr: "PHP message: PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'nfarm_save_contact' not found or invalid function name in /var/www/nfarm/wp-includes/class-wp-hook.php on line 307PHP message: PHP Stack trace:PHP message: PHP   1. {main}() /var/www/nfarm/wp-admin/admin-ajax.php:0PHP message: PHP   2. do_action($hook_name = 'wp_ajax_nfarm_save_user_contact_form') /var/www/nfarm/wp-admin/admin-ajax.php:187PHP message: PHP   3. WP_Hook->do_action($args = [0 => '']) /var/www/nfarm/wp-includes/plugin.php:474PHP message: PHP   4. WP_Hook->apply_filters($value = '', $args = [0 => '']) /var/www/nfarm/wp-includes/class-wp-hook.php:331" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/contact/"
+2022/05/02 14:55:53 [error] 217234#217234: *4790 FastCGI sent in stderr: "PHP message: PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'nfarm_save_contact' not found or invalid function name in /var/www/nfarm/wp-includes/class-wp-hook.php on line 307PHP message: PHP Stack trace:PHP message: PHP   1. {main}() /var/www/nfarm/wp-admin/admin-ajax.php:0PHP message: PHP   2. do_action($hook_name = 'wp_ajax_nfarm_save_user_contact_form') /var/www/nfarm/wp-admin/admin-ajax.php:187PHP message: PHP   3. WP_Hook->do_action($args = [0 => '']) /var/www/nfarm/wp-includes/plugin.php:474PHP message: PHP   4. WP_Hook->apply_filters($value = '', $args = [0 => '']) /var/www/nfarm/wp-includes/class-wp-hook.php:331" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/contact/"
+2022/05/02 14:56:33 [error] 217234#217234: *4790 FastCGI sent in stderr: "PHP message: PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'nfarm_save_contact' not found or invalid function name in /var/www/nfarm/wp-includes/class-wp-hook.php on line 307PHP message: PHP Stack trace:PHP message: PHP   1. {main}() /var/www/nfarm/wp-admin/admin-ajax.php:0PHP message: PHP   2. do_action($hook_name = 'wp_ajax_nfarm_save_user_contact_form') /var/www/nfarm/wp-admin/admin-ajax.php:187PHP message: PHP   3. WP_Hook->do_action($args = [0 => '']) /var/www/nfarm/wp-includes/plugin.php:474PHP message: PHP   4. WP_Hook->apply_filters($value = '', $args = [0 => '']) /var/www/nfarm/wp-includes/class-wp-hook.php:331" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/contact/"
+2022/05/02 14:57:14 [error] 217234#217234: *4832 FastCGI sent in stderr: "PHP message: PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'nfarm_save_contact' not found or invalid function name in /var/www/nfarm/wp-includes/class-wp-hook.php on line 307PHP message: PHP Stack trace:PHP message: PHP   1. {main}() /var/www/nfarm/wp-admin/admin-ajax.php:0PHP message: PHP   2. do_action($hook_name = 'wp_ajax_nfarm_save_user_contact_form') /var/www/nfarm/wp-admin/admin-ajax.php:187PHP message: PHP   3. WP_Hook->do_action($args = [0 => '']) /var/www/nfarm/wp-includes/plugin.php:474PHP message: PHP   4. WP_Hook->apply_filters($value = '', $args = [0 => '']) /var/www/nfarm/wp-includes/class-wp-hook.php:331" while reading response header from upstream, client: 127.0.0.1, server: nfarm.loc, request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/var/run/php/php7.4-fpm.sock:", host: "nfarm.loc", referrer: "http://nfarm.loc/contact/"

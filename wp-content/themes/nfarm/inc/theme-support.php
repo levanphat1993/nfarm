@@ -276,3 +276,13 @@ function nfarm_get_post_navigation(){
 	
 }
 
+function mailtrap($phpmailer) {
+	$phpmailer->isSMTP();
+	$phpmailer->Host = 'smtp.mailtrap.io';
+	$phpmailer->SMTPAuth = true;
+	$phpmailer->Port = 2525;
+	$phpmailer->Username = '40eb4ae76ed284';
+	$phpmailer->Password = '95b6fcd29a2c2e';
+  }
+  
+  add_action('phpmailer_init', 'mailtrap');
