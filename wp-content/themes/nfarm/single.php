@@ -23,6 +23,7 @@ get_header(); ?>
 								while(have_posts()) { 
 									
 									the_post();
+									nfarm_save_post_views(get_the_ID());
 									get_template_part('template-parts/single', get_post_format());
 									echo nfarm_post_navigation();
 									
