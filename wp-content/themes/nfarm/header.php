@@ -32,9 +32,7 @@
 <body <?php body_class(); ?>>
 
 
-	<!-- sidebar-closed -->
-	<div class="nfarm-sidebar">
-	
+<div class="nfarm-sidebar sidebar-closed">
 		
 		<div class="nfarm-sidebar-container">
 		
@@ -51,8 +49,8 @@
 		</div><!-- .nfarm-sidebar-container -->
 		
 	</div><!-- .nfarm-sidebar -->
-
-
+	
+	<div class="sidebar-overlay"></div>
 	
 	<div class="container-fluid">
 		

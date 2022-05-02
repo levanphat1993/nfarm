@@ -175,7 +175,9 @@ jQuery(document).ready( function($){
 
 	/* sidebar functions */
 	$(document).on('click', '.js-toggleSidebar', function() {
-    	$( '.nfarm-sidebar' ).toggleClass( 'sidebar-closed' );
+		$( '.nfarm-sidebar' ).toggleClass( 'sidebar-closed' );
+    	$( 'body' ).toggleClass( 'no-scroll' );
+    	$( '.sidebar-overlay' ).fadeToggle( 320 );
     });
 
 });
