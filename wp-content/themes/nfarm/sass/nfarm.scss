@@ -41,7 +41,17 @@ a { color: $primary-color; @include animate( color, 320ms );
 	Header 
 	------------------------------------------------
 */
-.header-container { position: relative; display: block; height: 326px; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+.header-container { 
+	@extend %text-shadow; 
+	position: relative; 
+	display: block; 
+	height: 326px; 
+
+	@media (max-width: $xs) {
+		height: 200px;
+	}
+}
+
 
 .site-title { color: #fff; margin: 0; font-size: 80px; }
 .site-description { font-size: 14px; color: #fff; margin-top: 1em; }
@@ -53,6 +63,7 @@ a { color: $primary-color; @include animate( color, 320ms );
 	------------------------------------------------
 */
 .navbar-nfarm { text-align: center; border: none; border-radius: 0; min-height: auto; margin-bottom: 0; background: rgba( 255,255,255,0.1); border-top: 1px solid rgba( 255,255,255,0.1);
+	padding: 0 15px;
 	ul { float: none; }
 	li { float: none; display: inline-block;
 		&.active {
@@ -740,6 +751,92 @@ h2.nfarm-widget-title {
 }
 
 // Contact form 
+.nfarm-contact-form {
+	padding: 40px 0;
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+
+	.form-group {
+		margin-bottom: 30px;
+		position: relative;
+
+		&:before {
+			position: absolute;
+			display: block;
+			content: '';
+
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background-color: $grey2;
+		}
+
+		.form-control-msg {
+			text-transform: uppercase;
+			font-weight: 500;
+			font-size: 10px;
+		}
+
+		&.has-error {
+			&:before {
+				background-color: #a94442;
+			}
+		}
+	}
+}
+
+.nfarm-form-control {
+	resize: vertical;
+	border: none;
+	border-radius: 0;
+	padding: 8px 15px;
+	outline: none;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+
+	&::-webkit-input-placeholder {
+		text-transform: uppercase;
+	}
+
+	&::-moz-placeholder {
+		text-transform: uppercase;
+	}
+
+	&:-ms-placeholder {
+		text-transform: uppercase;
+	}
+
+	&:-moz-placeholder {
+		text-transform: uppercase;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		box-shadow: none;
+	}
+}
+
+.btn-nfarm-form {
+	@include animate(all, 320ms);
+
+	background-color: $grey;
+	border-radius: 2px;
+	font-size: 26px;
+	padding: 14px 60px;
+	color: #fff;
+	font-weight: 100;
+	border: none;
+
+	&:hover,
+	&:focus {
+		background-color: $dark-grey;
+		color: #fff;
+	}
+}
+
 .form-control-msg {
 	display: none;
 }
@@ -753,5 +850,7 @@ h2.nfarm-widget-title {
 .js-show-feedback {
 	display: block;
 }
+
+
 
 
