@@ -1,4 +1,5 @@
 <?php
+global $detect;
 
 /*
 	
@@ -12,10 +13,12 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'nfarm-format-gallery' ); ?>>
 	<header class="entry-header text-center">
 		
-		<?php if( nfarm_get_attachment() ):  $attachments = nfarm_get_attachment(7); ?>
+		<?php //if( nfarm_get_attachment() ):  $attachments = nfarm_get_attachment(7); ?>
+
+		<?php if( nfarm_get_attachment() && !$detect->isMobile() && !$detect->isTablet() ): ?>
 			
             <div id="post-gallery-<?php the_ID(); ?>" class="carousel slide nfarm-carousel-thumb" data-ride="carousel">
-				
+			
             <div class="carousel-inner" role="listbox">
 					
 					<?php 

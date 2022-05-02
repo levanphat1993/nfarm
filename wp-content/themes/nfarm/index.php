@@ -18,7 +18,7 @@
 			
 			<div class="container text-center container-load-previous">
 				<a class="btn-nfarm-load nfarm-load-more" data-prev="1" data-page="<?php echo nfarm_check_paged(1); ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
-					<span class="sunset-icon nfarm-loading"></span>
+					<span class="nfarm-icon nfarm-loading"></span>
 					<span class="text">Load Previous</span>
 				</a>
 			</div><!-- .container -->
@@ -49,7 +49,7 @@
 
 			<div class="container text-center">
 				<a class="btn-nfarm-load nfarm-load-more" data-page="<?php echo nfarm_check_paged(1); ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
-					<span class="sunset-icon nfarm-loading"></span>
+					<span class="nfarm-icon nfarm-loading"></span>
 					<span class="text">Load More</span>
 				</a>
 			</div><!-- .container -->
