@@ -30,12 +30,41 @@
 	</head>
 
 <body <?php body_class(); ?>>
+
+
+	<!-- sidebar-closed -->
+	<div class="nfarm-sidebar">
+	
+		
+		<div class="nfarm-sidebar-container">
+		
+			<a class="js-toggleSidebar sidebar-close">
+				<span class="nfarm-icon nfarm-close"></span>
+			</a>
+		
+			<div class="sidebar-scroll">
+				
+				<?php get_sidebar(); ?>
+				
+			</div><!-- .sidebar-scroll -->
+		
+		</div><!-- .nfarm-sidebar-container -->
+		
+	</div><!-- .nfarm-sidebar -->
+
+
 	
 	<div class="container-fluid">
 		
 		<div class="row">
-				
+
+		
 			<header class="header-container background-image text-center" style="background-image: url(<?php header_image(); ?>);">
+
+			<a class="js-toggleSidebar sidebar-open">
+				<span class="nfarm-icon nfarm-menu"></span>
+			</a>
+				
 				
 				<div class="header-content table">
 					<div class="table-cell">

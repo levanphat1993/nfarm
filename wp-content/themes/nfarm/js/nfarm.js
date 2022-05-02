@@ -173,4 +173,9 @@ jQuery(document).ready( function($){
 		
 	}
 
+	/* sidebar functions */
+	$(document).on('click', '.js-toggleSidebar', function() {
+    	$( '.nfarm-sidebar' ).toggleClass( 'sidebar-closed' );
+    });
+
 });
