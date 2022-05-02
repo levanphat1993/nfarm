@@ -10,6 +10,7 @@
 
 class Nfarm_Profile_Widget extends WP_Widget {
 	
+	
 	//setup the widget name, description, etc...
 	public function __construct()
     {
@@ -66,6 +67,24 @@ class Nfarm_Profile_Widget extends WP_Widget {
 	
 }
 
-add_action('widgets_init', function() {
-	register_widget('Nfarm_Profile_Widget');
-});
+add_action( 'widgets_init', function() {
+	register_widget( 'Nfarm_Profile_Widget' );
+} );
+
+
+/*
+	Edit default WordPress widgets
+*/
+
+function nfarm_tag_cloud_font_change($args) // Check old version wp 3.5
+{
+	$args['smallest'] = 8;
+	$args['largest'] = 8;
+
+	return $args;
+}
+
+add_filter( 'widget_tag_cloud_args', 'nfarm_tag_cloud_font_change' );
+
+
+
