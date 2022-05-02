@@ -54,7 +54,7 @@ jQuery(document).ready( function($){
 		}
 		
 		that.addClass('loading').find('.text').slideUp(320);
-		that.find('.sunset-icon').addClass('spin');
+		that.find('.nfarm-icon').addClass('spin');
 		
 		$.ajax({
 			
@@ -97,7 +97,7 @@ jQuery(document).ready( function($){
 							that.data('page', newPage);
 						
 							that.removeClass('loading').find('.text').slideDown(320);
-							that.find('.sunset-icon').removeClass('spin');
+							that.find('.nfarm-icon').removeClass('spin');
 							
 						}
 						

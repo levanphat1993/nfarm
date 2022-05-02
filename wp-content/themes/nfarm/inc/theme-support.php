@@ -110,13 +110,13 @@ function nfarm_posted_footer()
 			$comments = __('1 Comment');
 		}
 		
-		$comments = '<a href="' . get_comments_link() . '">'. $comments .' <span class="sunset-icon nfarm-comment"></span></a>';
+		$comments = '<a href="' . get_comments_link() . '">'. $comments .' <span class="nfarm-icon nfarm-comment"></span></a>';
 	
 	} else {
 		$comments = __('Comments are closed');
 	}
 	
-	return '<div class="post-footer-container"><div class="row"><div class="col-xs-6 col-sm-6">'. get_the_tag_list('<div class="tags-list"><span class="sunset-icon nfarm-tag"></span>', ' ', '</div>') .'</div><div class="col-xs-6 col-sm-6 text-right">'. $comments .'</div></div></div>';
+	return '<div class="post-footer-container"><div class="row"><div class="col-xs-6 col-sm-6">'. get_the_tag_list('<div class="tags-list"><span class="nfarm-icon nfarm-tag"></span>', ' ', '</div>') .'</div><div class="col-xs-6 col-sm-6 text-right">'. $comments .'</div></div></div>';
 }
 
 
@@ -276,13 +276,23 @@ function nfarm_get_post_navigation(){
 	
 }
 
-function mailtrap($phpmailer) {
+function mailtrap($phpmailer)
+{
 	$phpmailer->isSMTP();
 	$phpmailer->Host = 'smtp.mailtrap.io';
 	$phpmailer->SMTPAuth = true;
 	$phpmailer->Port = 2525;
 	$phpmailer->Username = '40eb4ae76ed284';
 	$phpmailer->Password = '95b6fcd29a2c2e';
-  }
+}
   
-  add_action('phpmailer_init', 'mailtrap');
+add_action('phpmailer_init', 'mailtrap');
+
+  // Initialize global Mobile Detect
+function mobileDetectGlobal()
+{
+    global $detect;
+    $detect = new Mobile_Detect;
+}
+
+add_action('after_setup_theme', 'mobileDetectGlobal');
